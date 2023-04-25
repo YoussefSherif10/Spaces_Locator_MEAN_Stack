@@ -1,40 +1,34 @@
 extends layout
 
+include _includes/sharedHTMLfunction
+
 block content
     .col-12
-        h1 star Cups
+        h1= title
 
     .d-flex.justify-content-md-around.flex-wrap.col-12
         .p-2.d-inline-flex.flex-column.justify-content-around.col-md-6
             p.p-2
-                fa.fas.fa-star
-                fa.fas.fa-star
-                fa.fas.fa-star
-                fa.far.fa-star
-                fa.far.fa-star
-            p.address.p-2 125 High Street, Reading, RG6 1PS
+                +showRating(rating)
+            p.address.p-2= address
             .card.card-primary.p-2
                     h2.card-title Opening hours
                     .d-flex.flex-wrap.flex-column.justify-content-center
-                        p.card-text Monday - Friday : 7:00am - 7:00pm
-                        p.card-text Saturday : 8:00am - 5:00pm
-                        p.card-text Sunday : closed
+                        each hour in openingHours
+                            p.card-text= hour
+
             .card.card-primary.mt-2.p-2
                     h2.card-title Facilities
                         .d-flex.flex-wrap.justify-content-around
+                            each facility in facilities
                                 span.badge.bg-warning.p-2.m-2
                                     i.fa.fa-check
-                                    small &nbsp;Hot drinks
-                                span.badge.bg-warning.p-2.m-2
-                                    i.fa.fa-check
-                                    small &nbsp;Food
-                                span.badge.bg-warning.p-2.m-2
-                                    i.fa.fa-check
-                                    small &nbsp;Wifi
+                                    small &nbsp;#{facility}
+
 
         .card.card-primary.p-2.col-md-4
                 h2.card-title Location map
-                img.img-fluid.rounded(src='http://maps.googleapis.com/maps/api/staticmap?center=51.455041,-0.9690884&zoom=17&size=400x350&sensor=false&markers=51.455041,-0.9690884&scale=2&key=AIzaSyDX0W0bSoP2P81jHe4JcC1JaGXMRC4kXCo')
+                img.img-fluid.rounded(src=`${imgSrc}`)
 
         .card.col-12.p-2.mt-3
             h2.card-title
@@ -43,36 +37,13 @@ block content
 
             .d-flex.justify-content-around.flex-wrap
                 .list-group.p-2.col-12.col-md-8
-                    li.list-group-item.d-flex.flex-column
-                        span.p-1
-                            i.fas.fa-star
-                            i.fas.fa-star
-                            i.fas.fa-star
-                            i.fas.fa-star
-                            i.far.fa-star
-                        h3.p-1 Youssef Sherif
-                        small 25 April 2023
-                        h5.m-2 What a great place
-                    li.list-group-item.d-flex.flex-column
-                        span.p-1
-                            i.fas.fa-star
-                            i.fas.fa-star
-                            i.fas.fa-star
-                            i.far.fa-star
-                            i.far.fa-star
-                        h3.p-1 Nahed Ahmed
-                        small 25 April 2023
-                        h5.m-2 It was okay. Coffee wasn't great.
-                    li.list-group-item.d-flex.flex-column
-                        span.p-1
-                            i.fas.fa-star
-                            i.far.fa-star
-                            i.far.fa-star
-                            i.far.fa-star
-                            i.far.fa-star
-                        h3.p-1 Ibrahim Fekry
-                        small 25 April 2023
-                        h5.m-2 Didn't like it.
+                    each review in reviews
+                        li.list-group-item.d-flex.flex-column
+                            span.p-1
+                                +showRating(review.rating)
+                            h3.p-1= review.name
+                            small= review.date
+                            h5.m-2= review.review
 
                 .col-12.col-md-3.p-2.float-end
                     p Star cups is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.
