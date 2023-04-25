@@ -10,7 +10,7 @@ const locationInfo = (req, res) => {
 
 // adding new review
 const addReview = (req, res) => {
-    res.render('index', {title: 'review'});
+    res.render('location-review-form', {title: 'review'});
 }
 
 module.exports = {homeList, locationInfo, addReview};
