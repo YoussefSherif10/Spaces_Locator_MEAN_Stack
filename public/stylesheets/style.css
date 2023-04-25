@@ -5,8 +5,17 @@ body {
 
 a {
   color: #00B7FF;
+  text-decoration: none;
+  text-underline: none;
 }
 
-h1 {
-  color: red; !important;
+.address {
+  font-size: 24px;
 }
+
+.side {
+  font-size: 30px;
+  font-style: italic;
+}
+
+
