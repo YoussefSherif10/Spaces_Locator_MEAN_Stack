@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const dbURL = 'mongodb://localhost/loc8r';
+
+// deployed DB server
+//const dbURL = 'mongodb+srv://youssef:youssef10@cluster0.m9badmi.mongodb.net/?retryWrites=true&w=majority'
+
 mongoose.connect(dbURL, {useNewUrlParser: true});
 
 mongoose.connection.on('connected', () => {
@@ -33,3 +37,5 @@ process.once('SIGINT', () => {
         process.exit(0);
     })
 })
+
+require('./locations')

@@ -13,7 +13,7 @@ block content
             each location in locations
                 .card.mt-2
                     .card-block.d-flex.flex-column.justify-content-between
-                        h3.p-2
+                        h3.p-2.card-title
                             a(href='/location')= location.name
                             small &nbsp;
                                 +showRating(location.rating)

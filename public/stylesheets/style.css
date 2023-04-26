@@ -4,7 +4,7 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #298ab0;
   text-decoration: none;
   text-underline: none;
 }
@@ -13,5 +13,8 @@ a {
   font-size: 24px;
 }
 
+.card-title {
+  background-color: #9d9fa1;
+}
 
 
