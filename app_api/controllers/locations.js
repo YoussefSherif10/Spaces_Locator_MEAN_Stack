@@ -75,4 +75,26 @@ const createLocation = (req, res) => {
   });
 }
 
-module.exports = {locationsList, locationsReadOne, createLocation};
+const locationsUpdateOne = (req, res) => {
+  Loc.findById(req.params.locationId)
+      .select('-reviews -rating')
+      .exec()
+      .then(location => {
+        location.name = req.body.name;
+        location.address = req.body.address;
+        location.rating = req.body.rating;
+        location.facilities = req.body.facilities;
+        location.coords = [parseFloat(req.body.lng), parseFloat(req.body.lat)];
+        location.openingHours = req.body.openingHours;
+
+        location.save().then(response => {
+          responseSuccess(200, response, res);
+        }).catch(err => {
+          responseFailure(400, "the location is not updated", res)
+        })
+      }).catch(err => {
+        responseFailure(404, "Location not found", res);
+      })
+}
+
+module.exports = {locationsList, locationsReadOne, createLocation, locationsUpdateOne};

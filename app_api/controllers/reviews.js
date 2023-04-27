@@ -51,7 +51,28 @@ const createReview = (req, res) => {
 
       }).catch(e => {
           responseFailure(404, "the location is not found", res);
-  })
+      })
 }
 
-module.exports = {reviewsReadOne, createReview};
+const reviewsUpdateOne = (req, res) => {
+  Loc.findById(req.params.locationId)
+      .select('reviews')
+      .exec()
+      .then(location => {
+          let review = location.reviews.find(r => r.name == req.params.reviewName);
+          review.rating = req.body.rating;
+          review.review = req.body.review;
+          review.data = req.body.date;
+
+          location.save()
+              .then(response => {
+                  responseSuccess(200, response, res);
+              }).catch(err => {
+                responseFailure(400, "the review is not saved", res);
+              })
+      }).catch(error => {
+          responseFailure(404, "location not found", res);
+      })
+}
+
+module.exports = {reviewsReadOne, createReview, reviewsUpdateOne};
