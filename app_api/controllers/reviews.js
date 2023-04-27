@@ -75,4 +75,20 @@ const reviewsUpdateOne = (req, res) => {
       })
 }
 
-module.exports = {reviewsReadOne, createReview, reviewsUpdateOne};
+const reviewsDeleteOne = (req, res) => {
+  Loc.findById(req.params.locationId).select('reviews').exec()
+      .then(location => {
+          const index = location.reviews.findIndex(r => r.name == req.params.reviewName)
+          location.reviews.splice(index, 1);
+
+          location.save().then(response => {
+              responseSuccess(204, null, res);
+          }).catch(error => {
+              responseFailure(400, "the review is not deleted");
+          })
+      }).catch(err => {
+          responseFailure(404, "location not found", res);
+      })
+}
+
+module.exports = {reviewsReadOne, createReview, reviewsUpdateOne, reviewsDeleteOne};

@@ -97,4 +97,12 @@ const locationsUpdateOne = (req, res) => {
       })
 }
 
-module.exports = {locationsList, locationsReadOne, createLocation, locationsUpdateOne};
+const locationsDeleteOne = (req, res) => {
+  Loc.findByIdAndRemove(req.params.locationId).exec().then(response => {
+    responseSuccess(204, null, res);
+  }).catch(error => {
+    responseFailure(404, "location is not found", res);
+  })
+}
+
+module.exports = {locationsList, locationsReadOne, createLocation, locationsUpdateOne, locationsDeleteOne};

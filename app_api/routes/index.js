@@ -10,7 +10,7 @@ router.route('/locations')
 router.route('/locations/:locationId')
     .get(ctrlLocations.locationsReadOne)
     .put(ctrlLocations.locationsUpdateOne)
-    // .delete(ctrlLocations.locationsDeleteOne);
+    .delete(ctrlLocations.locationsDeleteOne);
 
 /* Reviews */
 router.route('/locations/:locationId/reviews')
@@ -18,6 +18,6 @@ router.route('/locations/:locationId/reviews')
 router.route('/locations/:locationId/reviews/:reviewName')
     .get(ctrlReviews.reviewsReadOne)
     .put(ctrlReviews.reviewsUpdateOne)
-    // .delete(ctrlReviews.reviewsDeleteOne);
+    .delete(ctrlReviews.reviewsDeleteOne);
 
 module.exports = router;
