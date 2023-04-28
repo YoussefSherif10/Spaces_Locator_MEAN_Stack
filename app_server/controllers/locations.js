@@ -137,7 +137,7 @@ const locationInfo = (req, res) => {
 }
 
 const renderReviewPage = (req, res, {name, _id}) => {
-    res.render('location-review-form', {title: name, id: _id});
+    res.render('location-review-form', {title: name, id: _id, error: req.query.err});
 }
 
 // adding review page

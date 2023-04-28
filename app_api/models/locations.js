@@ -15,7 +15,10 @@ const reviewSchema = new mongoose.Schema({
         type: Date,
         'default': Date.now
     },
-    review: String
+    review: {
+        type: String,
+        required: true
+    }
 })
 
 const locationSchema = new mongoose.Schema({
