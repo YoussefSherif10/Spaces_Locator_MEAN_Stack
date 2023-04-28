@@ -3,10 +3,10 @@ extends layout
 block content
     h1.col-12.m-3.border-bottom Review #{title}
 
-    form.col-12.col-md-8(action="/location", method="get", role="form").m-2.p-2
+    form.col-12.col-md-8(action="", method="post", role="form").m-2.p-2
         .form-group
             label(for="name") Name
-            input#name.form-control(type="text", placeholder="Enter Name")
+            input#name.form-control(type="text", placeholder="Enter Name", name="name")
         .form-group
             label(for="rating") Rating
             select#rating.form-control.input-sm(name="rating")
@@ -19,4 +19,4 @@ block content
                 label(for="review") Review
                 textarea#review.form-control(name="review", rows="5")
                 small.form-text.text-muted Please share your experience with that place
-            button.btn.btn-primary.float-end Add my review
+            button.btn.btn-primary.float-end(type="submit") Add my review

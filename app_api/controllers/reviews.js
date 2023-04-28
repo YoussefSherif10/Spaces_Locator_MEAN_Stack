@@ -31,7 +31,7 @@ const createReview = (req, res) => {
         location.reviews.push({
             rating: req.body.rating,
             name: req.body.name,
-            date: req.body.date,
+            date: req.body.date,    // the default is the current date
             review: req.body.review
         });
 

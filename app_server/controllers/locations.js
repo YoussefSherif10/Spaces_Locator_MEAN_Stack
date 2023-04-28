@@ -85,6 +85,21 @@ const homeList = (req, res) => {
     });
 }
 
+const getLocationInfo = (req, res, callback) => {
+  const requestOptions = {
+      url: `${apiOptions.server}/locations/${req.params.locationId}`,
+      method: 'GET',
+      json: {}
+  };
+
+  request(requestOptions, (error, {statusCode}, body) => {
+      if (statusCode === 200)
+          callback(req, res, body);
+      else
+          renderError(req, res);
+  })
+}
+
 /**
  * render the incoming data by using the location-info view
  * @param req : requestObj
@@ -116,19 +131,42 @@ const locationInfo = (req, res) => {
         qs: {}
     }
 
-    request(requestOptions, (error, response, body) => {
-        if (body)
-            renderLocationDetails(req, res, body);
+    getLocationInfo(req, res, (req, res, body) => {
+        renderLocationDetails(req, res, body);
+    })
+}
+
+const renderReviewPage = (req, res, {name, _id}) => {
+    res.render('location-review-form', {title: name, id: _id});
+}
+
+// adding review page
+const addReview = (req, res) => {
+    getLocationInfo(req, res, (req, res, body) => {
+        renderReviewPage(req, res, body);
+    })
+}
+
+// post the entered data to the api
+const doAddReview = (req, res) => {
+    const requestOptions = {
+        url: `${apiOptions.server}/locations/${req.params.locationId}/reviews`,
+        method: 'POST',
+        json: {
+            name: req.body.name,
+            rating: parseInt(req.body.rating, 10),
+            review: req.body.review
+        }
+    }
+
+    request(requestOptions, (err, {statusCode}, body) => {
+        if (statusCode === 201)
+            res.redirect(`/location/${req.params.locationId}`);
         else
             renderError(req, res);
     })
 }
 
-// adding new review
-const addReview = (req, res) => {
-    res.render('location-review-form', {title: 'Star cups'});
-}
-
-module.exports = {homeList, locationInfo, addReview};
+module.exports = {homeList, locationInfo, addReview, doAddReview};
 
 // AIzaSyDX0W0bSoP2P81jHe4JcC1JaGXMRC4kXCo  google key
