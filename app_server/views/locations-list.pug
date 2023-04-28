@@ -18,7 +18,7 @@ block content
                 .card.mt-2
                     .card-block.d-flex.flex-column.justify-content-between
                         h3.p-2.card-title
-                            a(href='/location')= location.name
+                            a(href=`/location/${location._id}`)= location.name
                             small &nbsp;
                                 +showRating(location.rating)
                             span.badge.bg-danger.float-end= location.distance

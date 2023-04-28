@@ -85,36 +85,43 @@ const homeList = (req, res) => {
     });
 }
 
+/**
+ * render the incoming data by using the location-info view
+ * @param req : requestObj
+ * @param res : response
+ * @param body : ApiResponse
+ */
+const renderLocationDetails = (req, res, body) => {
+    res.render('location-info', body);
+}
+
+/**
+ * renders the error to the user by re-using the about page
+ * @param req
+ * @param res
+ */
+const renderError = (req, res) => {
+    res.render('about', {
+        title: 'Error getting the page',
+        paragraphs: [{text: "Something went wrong, You can't get that page right now"}]
+    });
+}
+
 // details of a location
 const locationInfo = (req, res) => {
-    res.render('location-info', {
-        title: "Star cups",
-        rating: 3,
-        address: "125 High Street, Reading, RG6 1PS",
-        openingHours: ["Monday - Friday : 7:00am - 7:00pm", "Saturday : 8:00am - 5:00pm", "Sunday : closed"],
-        facilities: ["Hot Drinks", "Food", "Wifi"],
-        imgSrc: "http://maps.googleapis.com/maps/api/staticmap?center=51.455041,-0.9690884&zoom=17&size=400x350&sensor=false&markers=51.455041,-0.9690884&scale=2&key=AIzaSyDX0W0bSoP2P81jHe4JcC1JaGXMRC4kXCo",
-        reviews: [
-            {
-                rating: 4,
-                name: "Youssef Sherif",
-                date: "25 April 2023",
-                review: "what a great place"
-            },
-            {
-                rating: 3,
-                name: "Nahed Ahmed",
-                date: "25 April 2023",
-                review: "It was okay. Coffee wasn't great."
-            },
-            {
-                rating: 1,
-                name: "Ibrahim Fekry",
-                date: "25 April 2023",
-                review: "Didn't like it."
-            }
-        ]
-    });
+    const requestOptions = {
+        url: `${apiOptions.server}/locations/${req.params.locationId}`,
+        method: 'GET',
+        json: {},
+        qs: {}
+    }
+
+    request(requestOptions, (error, response, body) => {
+        if (body)
+            renderLocationDetails(req, res, body);
+        else
+            renderError(req, res);
+    })
 }
 
 // adding new review

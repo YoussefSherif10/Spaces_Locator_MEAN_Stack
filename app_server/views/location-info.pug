@@ -4,7 +4,7 @@ include _includes/sharedHTMLfunction
 
 block content
     .col-12
-        h1= title
+        h1= name
 
     .d-flex.justify-content-md-around.flex-wrap.col-12
         .p-2.d-inline-flex.flex-column.justify-content-around.col-md-6
@@ -42,7 +42,8 @@ block content
                             span.p-1
                                 +showRating(review.rating)
                             h3.p-1= review.name
-                            small= review.date
+                            small
+                                +dateFormat(review.date)
                             h5.m-2= review.review
 
                 .col-12.col-md-3.p-2.float-end

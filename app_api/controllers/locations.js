@@ -36,6 +36,7 @@ const locationsList = async (req, res) => {
     // get the needed data for the starting page
     const results = locations.map(loc => {
       return {
+        _id: loc._id,
         name: loc.name,
         address: loc.address,
         rating: loc.rating,
@@ -56,7 +57,7 @@ const locationsReadOne = (req, res) => {
   Loc.findById(req.params.locationId).exec().then(data => {
     responseSuccess(200, data, res);
   }).catch(err => {
-    responseFailure(404, "Location not found", res);
+    responseFailure(404, "Location not found" + err, res);
   });
 }
 
