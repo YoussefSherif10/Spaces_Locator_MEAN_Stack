@@ -15,7 +15,7 @@
                     <i class="fa{{location.rating < 3 ? 'r' : 's'}} fa-star"></i>
                     <i class="fa{{location.rating < 4 ? 'r' : 's'}} fa-star"></i>
                     <i class="fa{{location.rating < 5 ? 'r' : 's'}} fa-star"></i>
-                </small><span class="badge bg-danger float-end">{{location.distance}}km</span>
+                </small><span class="badge bg-danger float-end">{{location.distance | distance}}</span>
             </h3>
         </div>
         <p class="p-2 address">{{location.address}}</p>
