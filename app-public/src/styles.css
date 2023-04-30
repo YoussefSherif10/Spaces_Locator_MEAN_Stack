@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #298ab0;
+    text-decoration: none;
+    text-underline: none;
+}
+
+.address {
+    font-size: 24px;
+}
+
+.card-title {
+    background-color: #9d9fa1;
+}
+
+
