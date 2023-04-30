@@ -14,18 +14,7 @@ block content
 
     .row
         .col-12.col-md-8
-            each location in locations
-                .card.mt-2
-                    .card-block.d-flex.flex-column.justify-content-between
-                        h3.p-2.card-title
-                            a(href=`/location/${location._id}`)= location.name
-                            small &nbsp;
-                                +showRating(location.rating)
-                            span.badge.bg-danger.float-end= location.distance
-                    p.p-2.address= location.address
-                    .d-inline-flex.p-2
-                        each facility in location.facilities
-                          span.badge.bg-warning.p-2.m-2= facility
+            app-home-list
 
         .col-12.col-md-4.mt-3
             p.address Loc8r helps you find places to work when out and about.

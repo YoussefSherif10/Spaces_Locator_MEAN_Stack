@@ -111,3 +111,10 @@ Another huge advantage is the 1:1 relation between the model and the document in
 ![](https://github.com/YoussefSherif10/Spaces_Locator_MEAN_Stack/blob/main/SmartSelect_20230425_221041_Microsoft%20365%20(Office).jpg?raw=true)
 
 The last factor that made me choose Mongoose is using the geoNear aggregation method to calculate the distance of a location using its coordinates. I indexed the model as '2dsphere' for that calculation. This is needed in the Spaces application to display and retrieve locations according to their coordinates. 
+
+# Angular as part of the express application
+
+is a front-end framework that makes the work on the client's browser. it is used to make a Single Page Applications. I used a part of Angular in minimal style to build the cards for displaying the list of locations in the main home page.
+I built the Angular app for production and declared it as static files in the express application. I used scripts to link the [ runtime, polyfills, and main ] files to be able to use the defined tag in Angular Application. I then replaced the part of the cards in the home page and used the Angular tag instead.
+
+#### Note: We must permit CORS access from the server side in order for Angular to perform http requests to the API.
