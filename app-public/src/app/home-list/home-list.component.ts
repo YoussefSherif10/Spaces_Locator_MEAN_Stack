@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {SpacesDataService} from "../spaces-data.service";
+import {Subscription} from "rxjs";
 
 export class Location {
   constructor(
@@ -18,13 +20,20 @@ export class Location {
   styles: [
   ]
 })
-export class HomeListComponent {
-  location: Location = {
-    _id: '6448675cf647a97027280250',
-    name: 'Star Cups',
-    distance: 14573.459332764041,
-    address: '125 High Street, Reading, RG61PS',
-    rating: 3,
-    facilities: ['Hot Drinks', 'Food', 'Wifi']
+export class HomeListComponent implements OnInit, OnDestroy {
+  locations!: Location[];
+  subscription!: Subscription;
+
+  constructor(private data: SpacesDataService) {
+  }
+
+  ngOnInit() {
+    this.subscription = this.data.getLocations().subscribe(data => {
+      this.locations = data;
+    })
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

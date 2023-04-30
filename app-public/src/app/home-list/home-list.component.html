@@ -5,7 +5,7 @@
     <title>Spaces</title>
 </head>
 <body>
-    <div class="card mt-2">
+    <div class="card mt-2" *ngFor="let location of locations">
         <div class="card-block d-flex flex-column justify-content-between">
             <h3 class="p-2 card-title">
                 <a href="/location/{{location._id}}">{{location.name}}</a>
