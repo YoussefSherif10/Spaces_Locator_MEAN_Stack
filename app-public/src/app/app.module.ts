@@ -7,10 +7,13 @@ import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
 import { FrameworkComponent } from './framework/framework.component';
 import { AboutComponent } from './about/about.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { PageHeaderComponent } from './page-header/page-header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 const routes = [
   {path: 'about', component: AboutComponent},
-  {path: '', component: HomeListComponent}
+  {path: '', component: HomepageComponent}
 ]
 
 @NgModule({
@@ -18,7 +21,10 @@ const routes = [
     HomeListComponent,
     DistancePipe,
     FrameworkComponent,
-    AboutComponent
+    AboutComponent,
+    HomepageComponent,
+    PageHeaderComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
