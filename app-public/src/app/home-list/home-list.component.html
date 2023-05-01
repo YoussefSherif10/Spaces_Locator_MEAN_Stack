@@ -19,7 +19,7 @@
             </h3>
         </div>
         <p class="p-2 address">{{location.address}}</p>
-        <div class="d-inline-flex p-2" *ngIf="location.facilities">
+        <div class="d-inline-flex flex-wrap p-2" *ngIf="location.facilities">
             <span class="badge bg-warning p-2 m-2" *ngFor="let facility of location.facilities">{{facility}}</span>
         </div>
     </div>
