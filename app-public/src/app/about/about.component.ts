@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class AboutComponent {
-  title: string = 'About'
+  title: string = 'About Spaces'
   pageContent: string[] = [
     'Spaces Locator is a web application that can be used to locate nearby places that have wifi for you to get your work done.',
     'it can display up to 10 places around your location. Each location has the opening hours and days, facilities such as food, comfort, and others, the location on the map, and the reviews posted by people that went to these places.',
