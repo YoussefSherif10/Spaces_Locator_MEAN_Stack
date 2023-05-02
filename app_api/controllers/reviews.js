@@ -16,7 +16,7 @@ const reviewsReadOne = (req, res) => {
       .exec().then(location => {
         return location;
       }).then(location => {
-        const review = location.reviews.find(r => r.name == req.params.reviewName);
+        const review = location.reviews.find(r => r._id == req.params.reviewId);
         responseSuccess(200, review, res);
       }).catch(error => {
           responseFailure(404, "Review not found", res);
@@ -59,7 +59,7 @@ const reviewsUpdateOne = (req, res) => {
       .select('reviews')
       .exec()
       .then(location => {
-          let review = location.reviews.find(r => r.name == req.params.reviewName);
+          let review = location.reviews.find(r => r._id == req.params.reviewId);
           review.rating = req.body.rating;
           review.review = req.body.review;
           review.data = req.body.date;
@@ -78,7 +78,7 @@ const reviewsUpdateOne = (req, res) => {
 const reviewsDeleteOne = (req, res) => {
   Loc.findById(req.params.locationId).select('reviews').exec()
       .then(location => {
-          const index = location.reviews.findIndex(r => r.name == req.params.reviewName)
+          const index = location.reviews.findIndex(r => r._id == req.params.reviewId)
           location.reviews.splice(index, 1);
 
           location.save().then(response => {

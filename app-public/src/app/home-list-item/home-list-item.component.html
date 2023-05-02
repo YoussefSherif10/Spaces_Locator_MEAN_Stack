@@ -1,7 +1,7 @@
 <div class="card mt-1">
     <div class="card-block d-flex flex-column justify-content-between">
         <h3 class="p-2 card-title">
-            <a href="/location/{{location._id}}">{{location.name}}</a>
+            <a routerLink="location/{{location._id}}">{{location.name}}</a>
             <small>&nbsp;
                 <app-rating-stars [rating]="location.rating"></app-rating-stars>
             </small><span class="badge bg-danger float-end">{{location.distance | distance}}</span>

@@ -12,9 +12,15 @@ import { PageHeaderComponent } from './page-header/page-header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HomeListItemComponent } from './home-list-item/home-list-item.component';
 import { RatingStarsComponent } from './rating-stars/rating-stars.component';
+import { LocationDetailsComponent } from './location-details/location-details.component';
+import { DetailsPageComponent } from './details-page/details-page.component';
+import { ReviewsComponent } from './reviews/reviews.component';
+import { MostRecentFirstPipe } from './most-recent-first.pipe';
+import { ReviewComponent } from './review/review.component';
 
 const routes = [
   {path: 'about', component: AboutComponent},
+  {path: 'location/:locationId', component: DetailsPageComponent},
   {path: '', component: HomepageComponent}
 ]
 
@@ -28,7 +34,12 @@ const routes = [
     PageHeaderComponent,
     SidebarComponent,
     HomeListItemComponent,
-    RatingStarsComponent
+    RatingStarsComponent,
+    LocationDetailsComponent,
+    DetailsPageComponent,
+    ReviewsComponent,
+    MostRecentFirstPipe,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,

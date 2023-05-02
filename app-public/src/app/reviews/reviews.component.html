@@ -1,0 +1,12 @@
+<div class="card mt-3 p-2 col-12">
+    <h2 class="card-title">
+        <span style="color: #298ab0">Customer Reviews</span>
+        <a class="btn btn-primary float-end" href="/">Add review</a>
+    </h2>
+
+    <div class="list-group col-12">
+        <li *ngFor="let review of reviews | mostRecentFirst" class="list-group-item d-flex flex-column">
+            <app-review [review]="review"></app-review>
+        </li>
+    </div>
+</div>

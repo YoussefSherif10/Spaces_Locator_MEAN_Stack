@@ -1,0 +1,31 @@
+<div class="d-flex flex-wrap justify-content-between">
+    <div class="p-2 d-inline-flex flex-column justify-content-around">
+        <h4 class="p-2">
+            <app-rating-stars [rating]="location.rating"></app-rating-stars>
+        </h4>
+
+        <p class="p-2">{{location.address}}</p>
+
+        <div class="card p-2">
+            <h2 class="card-title" style="color: #298ab0">Opening Hours</h2>
+            <div class="d-flex flex-wrap flex-column justify-content-center">
+                <p class="card-text" *ngFor="let hour of location.openingHours">{{hour}}</p>
+            </div>
+        </div>
+
+        <div class="card card-primary mt-2 p-2">
+            <h2 class="card-title" style="color: #298ab0">Facilities</h2>
+            <div class="d-flex flex-wrap justify-content-around">
+            <span class="badge bg-warning p-2 m-2" *ngFor="let facility of location.facilities">
+                <i class="fa fa-check"></i>
+                <small>&nbsp;{{facility}}</small>
+            </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card p-2 col-12 col-md-6">
+        <h2 class="card-title" style="color: #298ab0">Map Location</h2>
+        <img class="rounded" src="http://maps.googleapis.com/maps/api/staticmap?center={{location.coords[1]}},{{location.coords[0]}}&zoom=17&size=400x450&sensor=false&markers={{location.coords[1]}},{{location.coords[0]}}&key={{googleApiKey}}&scale=2">
+    </div>
+</div>

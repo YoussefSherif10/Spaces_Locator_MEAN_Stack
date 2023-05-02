@@ -15,7 +15,7 @@ router.route('/locations/:locationId')
 /* Reviews */
 router.route('/locations/:locationId/reviews')
     .post(ctrlReviews.createReview);
-router.route('/locations/:locationId/reviews/:reviewName')
+router.route('/locations/:locationId/reviews/:reviewId')
     .get(ctrlReviews.reviewsReadOne)
     .put(ctrlReviews.reviewsUpdateOne)
     .delete(ctrlReviews.reviewsDeleteOne);
