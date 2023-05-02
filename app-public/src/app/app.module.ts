@@ -11,6 +11,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HomeListItemComponent } from './home-list-item/home-list-item.component';
+import { RatingStarsComponent } from './rating-stars/rating-stars.component';
 
 const routes = [
   {path: 'about', component: AboutComponent},
@@ -26,7 +27,8 @@ const routes = [
     HomepageComponent,
     PageHeaderComponent,
     SidebarComponent,
-    HomeListItemComponent
+    HomeListItemComponent,
+    RatingStarsComponent
   ],
   imports: [
     BrowserModule,

@@ -3,11 +3,7 @@
         <h3 class="p-2 card-title">
             <a href="/location/{{location._id}}">{{location.name}}</a>
             <small>&nbsp;
-                <i class="fa{{location.rating < 1 ? 'r' : 's'}} fa-star"></i>
-                <i class="fa{{location.rating < 2 ? 'r' : 's'}} fa-star"></i>
-                <i class="fa{{location.rating < 3 ? 'r' : 's'}} fa-star"></i>
-                <i class="fa{{location.rating < 4 ? 'r' : 's'}} fa-star"></i>
-                <i class="fa{{location.rating < 5 ? 'r' : 's'}} fa-star"></i>
+                <app-rating-stars [rating]="location.rating"></app-rating-stars>
             </small><span class="badge bg-danger float-end">{{location.distance | distance}}</span>
         </h3>
     </div>
