@@ -118,3 +118,11 @@ is a front-end framework that makes the work on the client's browser. it is used
 I built the Angular app for production and declared it as static files in the express application. I used scripts to link the [ runtime, polyfills, and main ] files to be able to use the defined tag in Angular Application. I then replaced the part of the cards in the home page and used the Angular tag instead.
 
 #### Note: We must permit CORS access from the server side in order for Angular to perform http requests to the API.
+
+# Angular full SPA
+
+I developed the whole front-end as an SPA using Angular framework and built the application in production and deployed it.
+In express, I used the angular built files as the main static files.
+
+# Application in Action
+
