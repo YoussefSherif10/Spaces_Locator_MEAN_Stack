@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HomeListComponent } from './home-list/home-list.component';
 import { DistancePipe } from './distance.pipe';
 import {HttpClientModule} from "@angular/common/http";
-import {RouterModule} from "@angular/router";
 import { FrameworkComponent } from './framework/framework.component';
 import { AboutComponent } from './about/about.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -18,12 +17,7 @@ import { ReviewsComponent } from './reviews/reviews.component';
 import { MostRecentFirstPipe } from './most-recent-first.pipe';
 import { ReviewComponent } from './review/review.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-
-const routes = [
-  {path: 'about', component: AboutComponent},
-  {path: 'location/:locationId', component: DetailsPageComponent},
-  {path: '', component: HomepageComponent}
-]
+import {AppRoutingModule} from "./app-routing/app-routing.module";
 
 @NgModule({
   declarations: [
@@ -45,9 +39,9 @@ const routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [FrameworkComponent]
