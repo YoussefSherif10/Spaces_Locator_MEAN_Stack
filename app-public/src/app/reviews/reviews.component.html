@@ -6,7 +6,7 @@
 
     <div class="list-group col-12">
         <li *ngFor="let review of reviews | mostRecentFirst" class="list-group-item d-flex flex-column">
-            <app-review [review]="review"></app-review>
+            <app-review [review]="review" [locationId]="locationId"></app-review>
         </li>
     </div>
 </div>

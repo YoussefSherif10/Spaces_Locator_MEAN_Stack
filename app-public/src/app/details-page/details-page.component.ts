@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SpacesDataService} from "../spaces-data.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {Subscription, switchMap} from "rxjs";
+import {DeleteReviewService} from "../delete-review.service";
 
 export class Review {
   constructor(
@@ -34,8 +35,9 @@ export class LocationDetails {
   styles: [
   ]
 })
-export class DetailsPageComponent implements OnInit{
+export class DetailsPageComponent implements OnInit, OnDestroy{
   locationDetails!: LocationDetails;
+  deleteSubscription!: Subscription;
   pageContent = {
     header: {
       title: ``,
@@ -47,7 +49,15 @@ export class DetailsPageComponent implements OnInit{
     ]
   }
 
-  constructor(private data: SpacesDataService, private route: ActivatedRoute) {
+  constructor(private data: SpacesDataService, private route: ActivatedRoute, private deleteEvent: DeleteReviewService) {
+    this.deleteSubscription = this.deleteEvent.getMessage().subscribe(message => {
+      if (message.event === 'clicked') {
+        this.data.deleteView(message.locationId, message.reviewId).subscribe(res => {
+          const index = this.locationDetails.reviews.findIndex(r => r._id === message.reviewId);
+          this.locationDetails.reviews.splice(index, 1);
+        })
+      }
+    })
   }
 
   ngOnInit() {
@@ -61,4 +71,9 @@ export class DetailsPageComponent implements OnInit{
       this.locationDetails = location;
     });
   }
+
+  ngOnDestroy() {
+    this.deleteSubscription.unsubscribe();
+  }
+
 }

@@ -4,3 +4,4 @@
 <h3 class="p-1">{{review.name}}</h3>
 <small>{{review.date | date}}</small>
 <h5 class="m-2">{{review.review}}</h5>
+<button class="btn btn-danger float-end" (click)="onClick(review._id)">Delete</button>
