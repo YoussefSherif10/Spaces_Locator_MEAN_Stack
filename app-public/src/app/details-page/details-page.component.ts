@@ -80,8 +80,10 @@ export class DetailsPageComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy() {
-    this.deleteSubscription.unsubscribe();
-    this.addSubscription.unsubscribe();
+    if (this.deleteSubscription)
+      this.deleteSubscription.unsubscribe();
+    if (this.addSubscription)
+      this.addSubscription.unsubscribe();
   }
 
 }

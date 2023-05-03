@@ -40,7 +40,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/app-public",
+            "outputPath": "dist/app-public/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -100,6 +100,59 @@
           "options": {
             "browserTarget": "app-public:build"
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/app-public/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media"
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "app-public:build:development",
+              "serverTarget": "app-public:server:development"
+            },
+            "production": {
+              "browserTarget": "app-public:build:production",
+              "serverTarget": "app-public:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "app-public:build:production",
+              "serverTarget": "app-public:server:production"
+            },
+            "development": {
+              "browserTarget": "app-public:build:development",
+              "serverTarget": "app-public:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

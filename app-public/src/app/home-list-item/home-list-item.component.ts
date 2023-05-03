@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Location} from "../home-list/home-list.component";
+import {Location} from "../homepage/homepage.component";
 
 @Component({
   selector: 'app-home-list-item',

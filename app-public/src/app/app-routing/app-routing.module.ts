@@ -15,7 +15,9 @@ const routes: Routes = [
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {
+    initialNavigation: 'enabledBlocking'
+})
   ],
   exports: [RouterModule]
 })

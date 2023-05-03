@@ -37,7 +37,7 @@ import {AppRoutingModule} from "./app-routing/app-routing.module";
     ReviewComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

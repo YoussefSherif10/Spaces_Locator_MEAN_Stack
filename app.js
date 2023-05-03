@@ -10,6 +10,7 @@ const apiRouter = require('./app_api/routes/index');
 
 const app = express();
 
+app.disable('etag');
 // view engine setup
 // app.set('views', path.join(__dirname, 'app_server', 'views'));
 // app.set('view engine', 'pug');
@@ -29,6 +30,7 @@ app.use('/api', (req, res, next) => {
     res.header('Access-Control-Allow-Origin', req.headers.origin);
     res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.setHeader('Access-Control-Allow-Credentials', true);
   }
   next();
 })

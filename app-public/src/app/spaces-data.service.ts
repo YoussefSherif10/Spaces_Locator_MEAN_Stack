@@ -1,8 +1,8 @@
 import {Injectable, isDevMode} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Location} from "./home-list/home-list.component";
 import {LocationDetails, Review} from "./details-page/details-page.component";
+import {Location} from "./homepage/homepage.component";
 
 @Injectable({
   providedIn: 'root'
