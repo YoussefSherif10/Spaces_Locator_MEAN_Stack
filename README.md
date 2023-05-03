@@ -129,11 +129,11 @@ In express, I used the angular built files as the main static files.
 In traditional authentication, the client sends the credentials to the server. The server then queries the DB for to check these data is right.
 The server sends cookie to the browser and set up the session for that user
 
- /image
+![](https://github.com/YoussefSherif10/Spaces_Locator_MEAN_Stack/blob/main/t1.png?raw=true)
 
 After the initial handshake, when the user requests a restricted resource, the server checks the session to see if that user is authenticated to get that resource then, sends it.
 
- /image
+![](https://github.com/YoussefSherif10/Spaces_Locator_MEAN_Stack/blob/main/t2.png?raw=true)
 
 The traditional approach is not a neat fit in the MEAN stack as node and express don't maintain sessions. Also, in SPA all the code is already sent to the browser.
 Instead of the traditional way, I used JSON web token (JWT) and a middleware (passport.js) to authenticate and manage sessions. 
@@ -141,4 +141,14 @@ Instead of the traditional way, I used JSON web token (JWT) and a middleware (pa
 JWT is a JSON object but encrypted so that it can only be understood by the application and the server.
 
 # Application in Action
+
+![](https://github.com/YoussefSherif10/Spaces_Locator_MEAN_Stack/blob/main/w1.png?raw=true)
+
+![](https://github.com/YoussefSherif10/Spaces_Locator_MEAN_Stack/blob/main/w2.png?raw=true)
+
+![](https://github.com/YoussefSherif10/Spaces_Locator_MEAN_Stack/blob/main/w3.png?raw=true)
+
+![](https://github.com/YoussefSherif10/Spaces_Locator_MEAN_Stack/blob/main/w5.png?raw=true)
+
+![](https://github.com/YoussefSherif10/Spaces_Locator_MEAN_Stack/blob/main/w6.png?raw=true)
 
