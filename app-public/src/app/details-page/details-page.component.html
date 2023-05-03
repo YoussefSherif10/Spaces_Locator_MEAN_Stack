@@ -5,4 +5,4 @@
     <app-sidebar class="col-12 col-md-2" [content]="pageContent.sidebar"></app-sidebar>
 </div>
 
-<app-reviews *ngIf="locationDetails" [reviews]="locationDetails.reviews" [locationId]="locationDetails._id"></app-reviews>
+<app-reviews *ngIf="locationDetails" [reviews]="locationDetails.reviews" [locationId]="locationDetails._id" (handleSubmit)="addReview($event)"></app-reviews>

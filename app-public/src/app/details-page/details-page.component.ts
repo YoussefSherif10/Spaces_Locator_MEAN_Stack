@@ -38,6 +38,7 @@ export class LocationDetails {
 export class DetailsPageComponent implements OnInit, OnDestroy{
   locationDetails!: LocationDetails;
   deleteSubscription!: Subscription;
+  addSubscription!: Subscription;
   pageContent = {
     header: {
       title: ``,
@@ -72,8 +73,15 @@ export class DetailsPageComponent implements OnInit, OnDestroy{
     });
   }
 
+  addReview(review: any) {
+    this.addSubscription = this.data.addReview(this.locationDetails._id, review).subscribe(rev => {
+      this.locationDetails.reviews.unshift(rev);
+    })
+  }
+
   ngOnDestroy() {
     this.deleteSubscription.unsubscribe();
+    this.addSubscription.unsubscribe();
   }
 
 }

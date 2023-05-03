@@ -1,8 +1,39 @@
 <div class="card mt-3 p-2 col-12">
     <h2 class="card-title">
         <span style="color: #298ab0">Customer Reviews</span>
-        <a class="btn btn-primary float-end" href="/">Add review</a>
+        <button class="btn btn-primary float-end" (click)="formVisible=true">Add review</button>
     </h2>
+
+    <form (ngSubmit)="onSubmit()" class="mt-2 mb-2 p-4" *ngIf="formVisible">
+        <div class="alert alert-danger" role="alert" *ngIf="formError">
+            {{formError}}
+        </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input [(ngModel)]="newReview.name" type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required>
+            <small id="nameHelp" class="form-text text-muted">Your review is going to be published with this name</small>
+        </div>
+
+        <div class="form-group mt-2">
+            <label for="rating">Rating</label>
+            <select [(ngModel)]="newReview.rating" class="form-control" id="rating" name="rating" required>
+                <option [ngValue]="5">5</option>
+                <option [ngValue]="4">4</option>
+                <option [ngValue]="3">3</option>
+                <option [ngValue]="2">2</option>
+                <option [ngValue]="1">1</option>
+            </select>
+        </div>
+
+        <div class="form-group mt-2">
+            <label for="review">Enter Review</label>
+            <textarea [(ngModel)]="newReview.review" class="form-control" id="review" name="review" rows="3" required></textarea>
+            <small id="reviewHelp" class="form-text text-muted">Describe your experience with this place</small>
+        </div>
+
+        <button class="btn btn-primary mt-2" type="submit">Submit Review</button>
+        <button class="btn btn-secondary mt-2 float-end" (click)="resetAndHide()">Cancel</button>
+    </form>
 
     <div class="list-group col-12">
         <li *ngFor="let review of reviews | mostRecentFirst" class="list-group-item d-flex flex-column">

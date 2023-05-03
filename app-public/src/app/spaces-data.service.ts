@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Location} from "./home-list/home-list.component";
-import {LocationDetails} from "./details-page/details-page.component";
+import {LocationDetails, Review} from "./details-page/details-page.component";
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +20,9 @@ export class SpacesDataService {
 
   public deleteView(locationId: string, reviewId: string) {
     return this.http.delete(`http://localhost:3000/api/locations/${locationId}/reviews/${reviewId}`)
+  }
+
+  public addReview(locationId: string, formData: any): Observable<Review> {
+    return this.http.post<Review>(`http://localhost:3000/api/locations/${locationId}/reviews`, formData);
   }
 }

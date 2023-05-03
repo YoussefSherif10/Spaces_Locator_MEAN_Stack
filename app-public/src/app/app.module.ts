@@ -17,6 +17,7 @@ import { DetailsPageComponent } from './details-page/details-page.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { MostRecentFirstPipe } from './most-recent-first.pipe';
 import { ReviewComponent } from './review/review.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 const routes = [
   {path: 'about', component: AboutComponent},
@@ -44,7 +45,9 @@ const routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [FrameworkComponent]
