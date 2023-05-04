@@ -41,4 +41,5 @@ process.once('SIGINT', () => {
     })
 })
 
-require('./locations')
+require('./locations');
+require('./users');
